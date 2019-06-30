@@ -1,0 +1,5 @@
+# Production-only server configuration
+debug: false
+#jwt_secret: "LfmFX71CKC1pDLM4q6HV9jv9ONyY21BF"
+google:
+  redirect_uri: http://makebuild.thosakwe.com:3000/auth/google/callback

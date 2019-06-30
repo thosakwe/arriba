@@ -1,0 +1,11 @@
+# Default server configuration.
+host: 127.0.0.1
+mongo_db: mongodb://localhost:27017/arriba
+port: 3000
+jwt_secret: "uZB4Anhhh4LtTeWXGjamLnWJzJG4KZJ3"
+google:
+  client_id: "1020245670892-e92gkdn0gi1t130soojutk01s1vdrhj1.apps.googleusercontent.com"
+  client_secret: "4h84z7wJooxqB3QvT4oE43p5"
+  redirect_uri: http://localhost:3000/auth/google/callback
+  scopes:
+    - "https://www.googleapis.com/auth/userinfo.profile"
