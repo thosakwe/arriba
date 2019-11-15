@@ -11,9 +11,8 @@ import 'package:angel_websocket/server.dart';
 import 'package:arriba_server/src/models/user.dart';
 import 'package:file/file.dart';
 import 'package:googleapis/oauth2/v2.dart';
-import 'package:http/io_client.dart' as http;
 import 'package:kilobyte/kilobyte.dart';
-import 'package:mongo_dart/mongo_dart.dart';
+import 'package:mongo_dart/mongo_dart.dart' hide Size;
 import 'package:path/path.dart' as p;
 
 import 'controllers/controllers.dart' as controllers;
@@ -164,7 +163,7 @@ AngelConfigurer configureServer(FileSystem fs) {
 
     // Proxy over Parcel in dev.
     if (!app.environment.isProduction) {
-      var proxy = Proxy(http.IOClient(), Uri.parse('http://localhost:1234'));
+      var proxy = Proxy(Uri.parse('http://localhost:1234'));
       app
         ..fallback(proxy.handleRequest)
         ..shutdownHooks.add((_) => proxy.close());

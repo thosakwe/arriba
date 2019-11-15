@@ -8,16 +8,15 @@ import 'package:logging/logging.dart';
 
 main() async {
   // Watch the config/ and web/ directories for changes, and hot-reload the server.
-  var hot = new HotReloader(() async {
-    var app = new Angel(reflector: MirrorsReflector());
+  var hot = HotReloader(() async {
+    var app = Angel(reflector: MirrorsReflector());
     await app.configure(configureServer);
     hierarchicalLoggingEnabled = true;
-    app.logger = new Logger.detached('arriba_server')
-      ..onRecord.listen(prettyLog);
+    app.logger = Logger.detached('arriba_server')..onRecord.listen(prettyLog);
     return app;
   }, [
-    new Directory('config'),
-    new Directory('lib'),
+    Directory('config'),
+    Directory('lib'),
   ]);
 
   var server = await hot.startServer('127.0.0.1', 3000);
